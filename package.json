@@ -21,6 +21,7 @@
     "framer-motion": "^11.9.0",
     "lucide-react": "^0.446.0",
     "next": "14.2.13",
+    "next-themes": "^0.3.0",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.33.5",
@@ -28,6 +29,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
