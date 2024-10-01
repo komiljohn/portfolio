@@ -1,18 +1,11 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+import Particles from "@/components/ui/particles";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+
+import Footer from "./ui/Footer";
 
 export const metadata: Metadata = {
   title: "Komiljon",
@@ -25,8 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`antialiased relative`}>
+        <ThemeProvider>
+          <Particles className="absolute inset-0 -z-[1]" quantity={100} ease={80} refresh />
+          {children}
+          <Footer />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
