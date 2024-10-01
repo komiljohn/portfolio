@@ -1,14 +1,19 @@
 import React from "react";
 
+import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 import { Badge } from "@/components/ui/badge";
 
 export default function Skills() {
   return (
     <section className="container mx-auto px-4 pt-[60px] pb-10 text-center">
-      <p className="text-2xl font-semibold mb-[18px]">Skills</p>
+      <FadeInWhenVisible>
+        <p className="text-2xl font-semibold mb-[18px]">Skills</p>
+      </FadeInWhenVisible>
       <div className="flex gap-2 flex-wrap justify-center">
-        {skils.map((item) => (
-          <Badge key={item}>{item}</Badge>
+        {skils.map((item, idx) => (
+          <FadeInWhenVisible key={item} delay={0.1 + idx / 30}>
+            <Badge>{item}</Badge>
+          </FadeInWhenVisible>
         ))}
       </div>
     </section>

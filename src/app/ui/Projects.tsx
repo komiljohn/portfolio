@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import React, { useState } from "react";
 
+import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Routes } from "@/utils/routes";
 
@@ -17,44 +18,47 @@ export default function Projects() {
 
   return (
     <section className="container mx-auto px-4 py-[60px]">
-      <p className="text-2xl font-semibold text-center mb-[18px]">Projects</p>
+      <FadeInWhenVisible>
+        <p className="text-2xl font-semibold text-center mb-[18px]">Projects</p>
+      </FadeInWhenVisible>
       <div className="space-y-6 mx-auto">
-        {projectsData.map((i) => (
-          <MagicCard
-            key={i.id}
-            className="hover:shadow-sm bg-transparent"
-            gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
-          >
-            <div className="flex items-center max-md:items-start justify-center w-full max-md:flex-col-reverse grow">
-              <div className="px-4 py-6 grow flex flex-col justify-between md:min-h-[200px] h-fit max-md:border-t max-md:w-full">
-                <div className="mb-4">
-                  <h2 className="text-base font-medium">
-                    <span className="">{i.title}</span>
-                  </h2>
-                  <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-2">
-                    {i.description}
-                  </p>
-                  <p className="flex gap-2 items-center flex-wrap">
-                    <span className="flex gap-1 flex-wrap text-sm">
-                      {i.stack.map((stack) => (
-                        <span
-                          className="whitespace-nowrap bg-bg-badge-light dark:bg-bg-badge-dark rounded-md p-1 text-xs font-semibold"
-                          key={stack}
-                        >
-                          {stack}
-                        </span>
-                      ))}
-                    </span>
-                  </p>
+        {projectsData.map((i, idx) => (
+          <FadeInWhenVisible key={i.id} delay={0.1 + idx / 10}>
+            <MagicCard
+              className="hover:shadow-sm bg-transparent"
+              gradientColor={theme === "dark" ? "#262626" : "#D9D9D955"}
+            >
+              <div className="flex items-center max-md:items-start justify-center w-full max-md:flex-col-reverse grow">
+                <div className="px-4 py-6 grow flex flex-col justify-between md:min-h-[200px] h-fit max-md:border-t max-md:w-full">
+                  <div className="mb-4">
+                    <h2 className="text-base font-medium">
+                      <span className="">{i.title}</span>
+                    </h2>
+                    <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-2">
+                      {i.description}
+                    </p>
+                    <p className="flex gap-2 items-center flex-wrap">
+                      <span className="flex gap-1 flex-wrap text-sm">
+                        {i.stack.map((stack) => (
+                          <span
+                            className="whitespace-nowrap bg-bg-badge-light dark:bg-bg-badge-dark rounded-md p-1 text-xs font-semibold"
+                            key={stack}
+                          >
+                            {stack}
+                          </span>
+                        ))}
+                      </span>
+                    </p>
+                  </div>
+                  <Link href={Routes.projectById(i.id)} className="flex items-center gap-2 w-fit text-sm">
+                    Learn more
+                    <MoveUpRight size={16} />
+                  </Link>
                 </div>
-                <Link href={Routes.projectById(i.id)} className="flex items-center gap-2 w-fit text-sm">
-                  Learn more
-                  <MoveUpRight size={16} />
-                </Link>
+                <ProductImage item={i} />
               </div>
-              <ProductImage item={i} />
-            </div>
-          </MagicCard>
+            </MagicCard>
+          </FadeInWhenVisible>
         ))}
       </div>
     </section>

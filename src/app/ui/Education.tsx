@@ -2,12 +2,15 @@ import Image from "next/image";
 import React from "react";
 
 import TatuImg from "@/app/images/tatu.png";
+import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 
 export default function Education() {
   return (
     <section className="container mx-auto px-4 pt-[60px] pb-10 text-center">
-      <p className="text-2xl font-semibold mb-[18px]">Education</p>
-      <div className="flex justify-between text-sm max-sm:flex-col max-sm:items-start">
+      <FadeInWhenVisible delay={0.2}>
+        <p className="text-2xl font-semibold mb-[18px]">Education</p>
+      </FadeInWhenVisible>
+      <FadeInWhenVisible delay={0.3} className="flex justify-between text-sm max-sm:flex-col max-sm:items-start">
         <div className="flex gap-3 items-center">
           <div className="size-[50px] max-sm:size-9 relative">
             <Image src={TatuImg.src} fill alt="university" className="rounded-full border dark:border-border-dark" />
@@ -20,7 +23,7 @@ export default function Education() {
           </div>
         </div>
         <p className="text-text-secondary-light dark:text-text-secondary-dark max-sm:pl-12">2018 - 2022</p>
-      </div>
+      </FadeInWhenVisible>
     </section>
   );
 }
