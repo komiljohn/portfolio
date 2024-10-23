@@ -37,7 +37,7 @@ export const projectsData: IProject[] = [
     description: "SaaS for creating and managing widgets",
     websiteImage: MarketingImg1,
     dashboardImage: DashboardImg1,
-    stack: ["TypeScript", "Next.js", "Tailwind CSS", "React aria", "Zustand", "Prisma CMS", "Mongo DB"],
+    stack: ["TypeScript", "Next.js", "Tailwind CSS", "React aria", "Zustand", "Payload CMS", "Mongo DB"],
     websites: [
       {
         id: "1-1",
