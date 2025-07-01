@@ -8,6 +8,7 @@ import { projectsData } from "@/app/utils/projectsData";
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 import OpacityWhenVisible from "@/components/animations/OpacityWhenVisible";
 import BlurFade from "@/components/ui/blur-fade";
+
 import ImageDialog from "./ImageDialog";
 
 export default function ProjectImages() {

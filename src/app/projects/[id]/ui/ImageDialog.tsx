@@ -1,6 +1,7 @@
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import Image, { StaticImageData } from "next/image";
 import React from "react";
+
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 
 export default function ImageDialog({
   onClose,
