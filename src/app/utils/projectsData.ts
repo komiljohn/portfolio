@@ -6,6 +6,7 @@ import DashboardImg3 from "@/app/images/dashboard-3.png";
 import DashboardImg4 from "@/app/images/dashboard-4.png";
 import MarketingImg1 from "@/app/images/marketing-1.png";
 import MarketingImg2 from "@/app/images/marketing-2.png";
+import NoCodeImg from "@/app/images/no-code.png";
 import TravelImg1 from "@/app/images/travel-1.jpg";
 import TravelImg2 from "@/app/images/travel-2.jpg";
 import TravelImg3 from "@/app/images/travel-3.jpg";
@@ -18,13 +19,14 @@ import TravelDashboardImg4 from "@/app/images/travel-dashboard-4.jpg";
 export interface IProject {
   id: string;
   title: string;
-  description: string;
+  subtitle: string;
+  description?: string;
   websiteImage: StaticImageData;
-  dashboardImage: StaticImageData;
+  dashboardImage?: StaticImageData;
   stack: string[];
   websites: {
     id: string;
-    title: string;
+    title?: string;
     url?: string;
     images: StaticImageData[];
   }[];
@@ -34,10 +36,18 @@ export const projectsData: IProject[] = [
   {
     id: "1",
     title: "Widgetjoy",
-    description: "SaaS for creating and managing widgets",
+    subtitle: "SaaS for creating and managing widgets",
     websiteImage: MarketingImg1,
     dashboardImage: DashboardImg1,
-    stack: ["TypeScript", "Next.js", "Tailwind CSS", "React aria", "Zustand", "Payload CMS", "Mongo DB"],
+    stack: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "React aria",
+      "Zustand",
+      "Payload CMS",
+      "Mongo DB",
+    ],
     websites: [
       {
         id: "1-1",
@@ -56,20 +66,47 @@ export const projectsData: IProject[] = [
   {
     id: "2",
     title: "Travel showcasing platform",
-    description: "Informative website for showcasing travel destinations",
+    subtitle: "Informative website for showcasing travel destinations",
     websiteImage: TravelImg1,
     dashboardImage: TravelDashboardImg1,
-    stack: ["TypeScript", "Next.js", "Tailwind CSS", "Shadcn", "Zustand", "NextAuth"],
+    stack: [
+      "TypeScript",
+      "Next.js",
+      "Tailwind CSS",
+      "Shadcn",
+      "Zustand",
+      "NextAuth",
+    ],
     websites: [
       {
         id: "2-1",
         title: "Dashboard site",
-        images: [TravelDashboardImg1, TravelDashboardImg2, TravelDashboardImg3, TravelDashboardImg4],
+        images: [
+          TravelDashboardImg1,
+          TravelDashboardImg2,
+          TravelDashboardImg3,
+          TravelDashboardImg4,
+        ],
       },
       {
         id: "2-2",
         title: "Client site",
         images: [TravelImg1, TravelImg2, TravelImg3, TravelImg4],
+      },
+    ],
+  },
+  {
+    id: "3",
+    title: "No-code object builder",
+    subtitle: "No-code object builder for creating and managing tables",
+    description:
+      "A dynamic table system featuring selective row editing and a flexible pivot table with customizable columns, rows, and values — including support for recursive tree expansion to visualize hierarchical data.",
+    websiteImage: NoCodeImg,
+    stack: ["JavaScript", "React", "CSS", "MUI", "Redux"],
+    websites: [
+      {
+        id: "2-1",
+        images: [NoCodeImg],
       },
     ],
   },

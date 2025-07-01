@@ -1,19 +1,24 @@
-import React from "react";
-
 import FadeInWhenVisible from "@/components/animations/FadeInWhenVisible";
 
 export default function Banner() {
   return (
-    <section className="container mx-auto px-4 text-center pb-[100px] pt-[160px]">
+    <section className="container mx-auto px-4 text-center py-32 min-h-[60vh] flex flex-col items-center justify-center">
       <FadeInWhenVisible>
-        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10 max-sm:text-7xl">
-          Komiljon Kamol
-        </span>
+        <h1>
+          <span className="text-7xl font-bold text-gray-900 dark:text-gray-100 max-sm:text-5xl">
+            Komiljon Kamol
+          </span>
+        </h1>
       </FadeInWhenVisible>
-      <FadeInWhenVisible delay={0.1}>
-        <p className="text-4xl mb-6 text-text-secondary-light dark:text-text-secondary-dark mt-[18px] max-sm:text-3xl">
-          Frontend Engineer
-        </p>
+      <FadeInWhenVisible delay={0.2}>
+        <div className="mt-8 flex flex-col items-center gap-4">
+          <p className="text-3xl font-medium text-gray-700 dark:text-gray-300 max-sm:text-2xl">
+            Software Engineer
+          </p>
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Crafting responsive and accessible web experiences
+          </p>
+        </div>
       </FadeInWhenVisible>
     </section>
   );

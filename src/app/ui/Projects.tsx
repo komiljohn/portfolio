@@ -35,7 +35,7 @@ export default function Projects() {
                       <span className="">{i.title}</span>
                     </h2>
                     <p className="text-sm text-text-secondary-light dark:text-text-secondary-dark mb-2">
-                      {i.description}
+                      {i.subtitle}
                     </p>
                     <p className="flex gap-2 items-center flex-wrap">
                       <span className="flex gap-1 flex-wrap text-sm">
@@ -50,7 +50,10 @@ export default function Projects() {
                       </span>
                     </p>
                   </div>
-                  <Link href={Routes.projectById(i.id)} className="flex items-center gap-2 w-fit text-sm">
+                  <Link
+                    href={Routes.projectById(i.id)}
+                    className="flex items-center gap-2 w-fit text-sm"
+                  >
                     Learn more
                     <MoveUpRight size={16} />
                   </Link>
@@ -70,30 +73,33 @@ type WebsiteType = "website" | "dashboard";
 const ProductImage = ({ item }: { item: IProject }) => {
   const [activeKey, setActiveKey] = useState<WebsiteType>("website");
 
+  const imageSrc = item?.dashboardImage
+    ? activeKey === "website"
+      ? item.websiteImage.src
+      : item.dashboardImage?.src
+    : item.websiteImage;
+
   return (
     <div className="relative h-[200px] w-[350px] max-md:max-w-full md:max-w-[350px] min-w-[350px] max-md:min-w-[548px] max-sm:min-w-[calc(100vw-32px)] max-md:w-full bg-white">
-      <Image
-        fill
-        src={activeKey === "website" ? item.websiteImage.src : item.dashboardImage.src}
-        alt="project"
-        className="object-cover"
-      />
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 border bg-white shadow-sm rounded-md p-0.5 dark:border-border-dark dark:bg-gray-700">
-        <ToggleGroup
-          defaultValue="website"
-          size="sm"
-          type="single"
-          className=""
-          onValueChange={(e) => setActiveKey(e as WebsiteType)}
-        >
-          <ToggleGroupItem value="website" aria-label="Toggle bold">
-            Website
-          </ToggleGroupItem>
-          <ToggleGroupItem value="dashboard" aria-label="Toggle italic">
-            Dashboard
-          </ToggleGroupItem>
-        </ToggleGroup>
-      </div>
+      <Image fill src={imageSrc} alt="project" className="object-cover" />
+      {item.websites.length > 1 && (
+        <div className="absolute bottom-2 left-1/2 -translate-x-1/2 border bg-white shadow-sm rounded-md p-0.5 dark:border-border-dark dark:bg-gray-700">
+          <ToggleGroup
+            defaultValue="website"
+            size="sm"
+            type="single"
+            className=""
+            onValueChange={(e) => setActiveKey(e as WebsiteType)}
+          >
+            <ToggleGroupItem value="website" aria-label="Toggle bold">
+              Website
+            </ToggleGroupItem>
+            <ToggleGroupItem value="dashboard" aria-label="Toggle italic">
+              Dashboard
+            </ToggleGroupItem>
+          </ToggleGroup>
+        </div>
+      )}
     </div>
   );
 };
